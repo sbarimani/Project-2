@@ -1,0 +1,330 @@
+Jupyter Notebook
+Project 2
+Last Checkpoint: 43 minutes ago
+(autosaved)
+Current Kernel Logo
+Python 3 
+File
+Edit
+View
+Insert
+Cell
+Kernel
+Widgets
+Help
+1
+​
+2
+# Dependencies
+3
+import pandas as pd
+4
+occupation_income = "../Desktop/inc_occ_gender.csv"
+5
+​
+1
+occupation_income_pd = pd.read_csv(occupation_income)
+2
+occupation_income_pd.head(20)
+Occupation	All_workers	All_weekly	M_workers	M_weekly	F_workers	F_weekly
+0	ALL OCCUPATIONS	109080	809	60746	895	48334	726
+1	MANAGEMENT	12480	1351	7332	1486	5147	1139
+2	Chief executives	1046	2041	763	2251	283	1836
+3	General and operations managers	823	1260	621	1347	202	1002
+4	Legislators	8	Na	5	Na	4	Na
+5	Advertising and promotions managers	55	1050	29	Na	26	Na
+6	Marketing and sales managers	948	1462	570	1603	378	1258
+7	Public relations and fundraising managers	59	1557	24	Na	35	Na
+8	Administrative services managers	170	1191	96	1451	73	981
+9	Computer and information systems managers	636	1728	466	1817	169	1563
+10	Financial managers	1124	1408	551	1732	573	1130
+11	Compensation and benefits managers	23	Na	7	Na	16	Na
+12	Human resources managers	254	1365	68	1495	186	1274
+13	Training and development managers	37	Na	17	Na	20	Na
+14	Industrial production managers	267	1485	221	1528	45	Na
+15	Purchasing managers	193	1348	109	1404	84	1226
+16	Transportation, storage, and distribution mana...	276	966	224	1006	52	749
+17	Farmers, ranchers, and other agricultural mana...	129	769	106	847	23	Na
+18	Construction managers	471	1329	429	1357	42	Na
+19	Education administrators	778	1423	282	1585	496	1252
+1
+​
+2
+# Display a statistical overview of the DataFrame
+3
+​
+4
+occupation_income_pd.columns
+Index(['Occupation', 'All_workers', 'All_weekly', 'M_workers', 'M_weekly',
+       'F_workers', 'F_weekly'],
+      dtype='object')
+1
+occupation_income_pd = occupation_income_pd[["Occupation","F_weekly","M_weekly"]]
+2
+occupation_income_pd.head(6)
+Occupation	F_weekly	M_weekly
+0	ALL OCCUPATIONS	726	895
+1	MANAGEMENT	1139	1486
+2	Chief executives	1836	2251
+3	General and operations managers	1002	1347
+4	Legislators	Na	Na
+5	Advertising and promotions managers	Na	Na
+1
+#Dependencies
+2
+import pandas as pd
+3
+loan_income = "../Desktop/loan_final313.csv"
+1
+loan_income_pd = pd.read_csv(loan_income)
+2
+loan_income_pd.head(10)
+id	year	issue_d	final_d	emp_length_int	home_ownership	home_ownership_cat	income_category	annual_inc	income_cat	...	loan_condition_cat	interest_rate	grade	grade_cat	dti	total_pymnt	total_rec_prncp	recoveries	installment	region
+0	1077501	2011	01/12/2011	1012015	10.0	RENT	1	Low	24000	1	...	0	10.65	B	2	27.65	5861.071414	5000.00	0.00	162.87	munster
+1	1077430	2011	01/12/2011	1042013	0.5	RENT	1	Low	30000	1	...	1	15.27	C	3	1.00	1008.710000	456.46	117.08	59.83	leinster
+2	1077175	2011	01/12/2011	1062014	10.0	RENT	1	Low	12252	1	...	0	15.96	C	3	8.72	3003.653644	2400.00	0.00	84.33	cannught
+3	1076863	2011	01/12/2011	1012015	10.0	RENT	1	Low	49200	1	...	0	13.49	C	3	20.00	12226.302210	10000.00	0.00	339.31	ulster
+4	1075358	2011	01/12/2011	1012016	1.0	RENT	1	Low	80000	1	...	0	12.69	B	2	17.94	3242.170000	2233.10	0.00	67.79	ulster
+5	1075269	2011	01/12/2011	1012015	3.0	RENT	1	Low	36000	1	...	0	7.90	A	1	11.20	5631.377753	5000.00	0.00	156.46	munster
+6	1069639	2011	01/12/2011	1012016	8.0	RENT	1	Low	47004	1	...	0	15.96	C	3	23.51	8136.840000	5110.85	0.00	170.08	leinster
+7	1072053	2011	01/12/2011	1012015	9.0	RENT	1	Low	48000	1	...	0	18.64	E	5	5.35	3938.144334	3000.00	0.00	109.43	ulster
+8	1071795	2011	01/12/2011	1042012	4.0	OWN	2	Low	40000	1	...	1	21.28	F	6	5.55	646.020000	162.02	189.06	152.39	ulster
+9	1071570	2011	01/12/2011	1112012	0.5	RENT	1	Low	15000	1	...	1	12.69	B	2	18.08	1476.190000	673.48	269.29	121.45	munster
+10 rows × 30 columns
+
+1
+#Display a statistical overview of the DataFrame
+2
+loan_income_pd.columns
+Index(['id', 'year', 'issue_d', 'final_d', 'emp_length_int', 'home_ownership',
+       'home_ownership_cat', 'income_category', 'annual_inc', 'income_cat',
+       'loan_amount', 'term', 'term_cat', 'application_type',
+       'application_type_cat', 'purpose', 'purpose_cat', 'interest_payments',
+       'interest_payment_cat', 'loan_condition', 'loan_condition_cat',
+       'interest_rate', 'grade', 'grade_cat', 'dti', 'total_pymnt',
+       'total_rec_prncp', 'recoveries', 'installment', 'region'],
+      dtype='object')
+10
+1
+loan_income_pd = loan_income_pd[["emp_length_int","home_ownership","income_category","annual_inc",]]
+2
+loan_income_pd.head(10)
+emp_length_int	home_ownership	income_category	annual_inc
+0	10.0	RENT	Low	24000
+1	0.5	RENT	Low	30000
+2	10.0	RENT	Low	12252
+3	10.0	RENT	Low	49200
+4	1.0	RENT	Low	80000
+5	3.0	RENT	Low	36000
+6	8.0	RENT	Low	47004
+7	9.0	RENT	Low	48000
+8	4.0	OWN	Low	40000
+9	0.5	RENT	Low	15000
+1
+#Dependencies
+2
+import pandas as pd
+3
+bank_personal_modeling = "../Desktop/Bank_Personal_lllllLoan_Modelling.csv"
+1
+bank_personal_modeling_pd = pd.read_csv(bank_personal_modeling)
+2
+bank_personal_modeling_pd.head(10)
+ID	Age	Experience	Income	ZIP Code	Family	CCAvg	Education	Mortgage	Personal Loan	Securities Account	CD Account	Online	CreditCard
+0	1	25	1	49	91107	4	1.6	1	0	0	1	0	0	0
+1	2	45	19	34	90089	3	1.5	1	0	0	1	0	0	0
+2	3	39	15	11	94720	1	1.0	1	0	0	0	0	0	0
+3	4	35	9	100	94112	1	2.7	2	0	0	0	0	0	0
+4	5	35	8	45	91330	4	1.0	2	0	0	0	0	0	1
+5	6	37	13	29	92121	4	0.4	2	155	0	0	0	1	0
+6	7	53	27	72	91711	2	1.5	2	0	0	0	0	1	0
+7	8	50	24	22	93943	1	0.3	3	0	0	0	0	0	1
+8	9	35	10	81	90089	3	0.6	2	104	0	0	0	1	0
+9	10	34	9	180	93023	1	8.9	3	0	1	0	0	0	0
+1
+bank_personal_modeling_pd.columns
+Index(['ID', 'Age', 'Experience', 'Income', 'ZIP Code', 'Family', 'CCAvg',
+       'Education', 'Mortgage', 'Personal Loan', 'Securities Account',
+       'CD Account', 'Online', 'CreditCard'],
+      dtype='object')
+10
+1
+bank_personal_modeling_pd = bank_personal_modeling_pd[["Age","Experience","Income","ZIP Code"]]
+2
+bank_personal_modeling_pd.head(10)
+Age	Experience	Income	ZIP Code
+0	25	1	49	91107
+1	45	19	34	90089
+2	39	15	11	94720
+3	35	9	100	94112
+4	35	8	45	91330
+5	37	13	29	92121
+6	53	27	72	91711
+7	50	24	22	93943
+8	35	10	81	90089
+9	34	9	180	93023
+1
+!pip install ipython-sql
+2
+!pip install psycopg2
+Requirement already satisfied: ipython-sql in /opt/anaconda3/lib/python3.7/site-packages (0.3.9)
+Requirement already satisfied: ipython>=1.0 in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (7.8.0)
+Requirement already satisfied: sqlparse in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (0.3.0)
+Requirement already satisfied: ipython-genutils>=0.1.0 in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (0.2.0)
+Requirement already satisfied: prettytable in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (0.7.2)
+Requirement already satisfied: sqlalchemy>=0.6.7 in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (1.3.9)
+Requirement already satisfied: six in /opt/anaconda3/lib/python3.7/site-packages (from ipython-sql) (1.12.0)
+Requirement already satisfied: pygments in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (2.4.2)
+Requirement already satisfied: backcall in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (0.1.0)
+Requirement already satisfied: pexpect; sys_platform != "win32" in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (4.7.0)
+Requirement already satisfied: appnope; sys_platform == "darwin" in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (0.1.0)
+Requirement already satisfied: setuptools>=18.5 in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (41.4.0)
+Requirement already satisfied: pickleshare in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (0.7.5)
+Requirement already satisfied: decorator in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (4.4.0)
+Requirement already satisfied: traitlets>=4.2 in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (4.3.3)
+Requirement already satisfied: jedi>=0.10 in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (0.15.1)
+Requirement already satisfied: prompt-toolkit<2.1.0,>=2.0.0 in /opt/anaconda3/lib/python3.7/site-packages (from ipython>=1.0->ipython-sql) (2.0.10)
+Requirement already satisfied: ptyprocess>=0.5 in /opt/anaconda3/lib/python3.7/site-packages (from pexpect; sys_platform != "win32"->ipython>=1.0->ipython-sql) (0.6.0)
+Requirement already satisfied: parso>=0.5.0 in /opt/anaconda3/lib/python3.7/site-packages (from jedi>=0.10->ipython>=1.0->ipython-sql) (0.5.1)
+Requirement already satisfied: wcwidth in /opt/anaconda3/lib/python3.7/site-packages (from prompt-toolkit<2.1.0,>=2.0.0->ipython>=1.0->ipython-sql) (0.1.7)
+Collecting psycopg2
+  Using cached https://files.pythonhosted.org/packages/84/d7/6a93c99b5ba4d4d22daa3928b983cec66df4536ca50b22ce5dcac65e4e71/psycopg2-2.8.4.tar.gz
+    ERROR: Command errored out with exit status 1:
+     command: /opt/anaconda3/bin/python -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/private/var/folders/zq/gpklwzq93fs1zdpn5x220rzh0000gn/T/pip-install-qyie97eu/psycopg2/setup.py'"'"'; __file__='"'"'/private/var/folders/zq/gpklwzq93fs1zdpn5x220rzh0000gn/T/pip-install-qyie97eu/psycopg2/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base pip-egg-info
+         cwd: /private/var/folders/zq/gpklwzq93fs1zdpn5x220rzh0000gn/T/pip-install-qyie97eu/psycopg2/
+    Complete output (23 lines):
+    running egg_info
+    creating pip-egg-info/psycopg2.egg-info
+    writing pip-egg-info/psycopg2.egg-info/PKG-INFO
+    writing dependency_links to pip-egg-info/psycopg2.egg-info/dependency_links.txt
+    writing top-level names to pip-egg-info/psycopg2.egg-info/top_level.txt
+    writing manifest file 'pip-egg-info/psycopg2.egg-info/SOURCES.txt'
+    
+    Error: pg_config executable not found.
+    
+    pg_config is required to build psycopg2 from source.  Please add the directory
+    containing pg_config to the $PATH or specify the full executable path with the
+    option:
+    
+        python setup.py build_ext --pg-config /path/to/pg_config build ...
+    
+    or with the pg_config option in 'setup.cfg'.
+    
+    If you prefer to avoid building psycopg2 from source, please install the PyPI
+    'psycopg2-binary' package instead.
+    
+    For further information please check the 'doc/src/install.rst' file (also at
+    <http://initd.org/psycopg/docs/install.html>).
+    
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+1
+DB_ENDPOINT = "localhost"
+2
+DB = 'buyers_DB'
+3
+DB_USER = 'postgres'
+4
+DB_PASSWORD = 
+5
+DB_PORT = '5432'
+6
+​
+7
+# postgresql://username:password@host:port/database
+8
+conn_string = "postgresql://{}:{}@{}:{}/{}" \
+9
+                        .format(DB_USER, DB_PASSWORD, DB_ENDPOINT, DB_PORT, DB)
+10
+​
+11
+print(conn_string)
+postgresql://postgres:S@mi1384@localhost:5432/buyers_DB
+1
+%load_ext sql
+1
+%sql $conn_string
+'Connected: postgres@buyers_DB'
+1
+import pandas as pd
+2
+from sqlalchemy import create_engine
+3
+rds_connection_string = "postgres:S@mi1384@localhost:5432/buyers_DB"
+4
+​
+5
+engine = create_engine(f'postgresql://{rds_connection_string}')
+1
+engine.table_names()
+['bank_personal_modeling',
+ 'loan_income',
+ 'loan_incom',
+ 'Occupation_income',
+ 'occupation_income']
+1
+occupation_income_pd = occupation_income_pd.rename(columns={"Occupation": "occupation","F_weekly": "f_weekly","M_weekly": "m_weekly"})
+2
+occupation_income_pd.to_sql(name='occupation_income', con=engine, if_exists='append', index=False)
+1
+pd.read_sql_query('select * from occupation_income', con=engine).head()
+occupation	f_weekly	m_weekly
+0	ALL OCCUPATIONS	726	895
+1	MANAGEMENT	1139	1486
+2	Chief executives	1836	2251
+3	General and operations managers	1002	1347
+4	Legislators	Na	Na
+1
+occupation_income_pd.to_sql(name='occupation_income', con=engine, if_exists='append', index=False)
+pd.read_sql_query('select * from occupation_income', con=engine).head(6)
+1
+pd.read_sql_query('select * from occupation_income', con=engine).head(6)
+occupation	f_weekly	m_weekly
+0	ALL OCCUPATIONS	726	895
+1	MANAGEMENT	1139	1486
+2	Chief executives	1836	2251
+3	General and operations managers	1002	1347
+4	Legislators	Na	Na
+5	Advertising and promotions managers	Na	Na
+1
+bank_personal_modeling_pd = bank_personal_modeling_pd.rename(columns={"Age":"age", "Experience" :"experience","Income":"income","ZIP Code": "zipcode"})
+2
+bank_personal_modeling_pd.to_sql(name='bank_personal_modeling', con=engine, if_exists='append', index=False)
+pd.read_sql_query('select * from bank_personal_modeling', con=engine).head(6)
+1
+pd.read_sql_query('select * from bank_personal_modeling', con=engine).head(6)
+age	experience	income	zipcode
+0	25	1	49	91107
+1	45	19	34	90089
+2	39	15	11	94720
+3	35	9	100	94112
+4	35	8	45	91330
+5	37	13	29	92121
+pd.read_sql_query('select * from loan_income', con=engine).head(6)
+1
+pd.read_sql_query('select * from loan_income', con=engine).head(6)
+emp_length	home_ownership	income_category	annual_inc
+1
+loan_income_pd = loan_income_pd.rename(columns={"emp_length_int": "emp_length","home_ownership": "home_owner","income_category":"income_cat","annual_inc":"annual_income"
+2
+})
+3
+loan_income_pd.to_sql(name='loan_income', con=engine, if_exists='append', index=False)
+4
+​
+1
+pd.read_sql_query('select * from loan_income', con=engine).head(6)
+emp_length	home_owner	income_cat	annual_income
+0	10.0	RENT	Low	24000
+1	0.5	RENT	Low	30000
+2	10.0	RENT	Low	12252
+3	10.0	RENT	Low	49200
+4	1.0	RENT	Low	80000
+5	3.0	RENT	Low	36000
+1
+​
+1
+​
+1
+​
